@@ -5,7 +5,7 @@
 	echo "Integration Test"	
 } */
 
-/Declarative
+//Declarative
 pipeline {
 	agent any
 	stages {
