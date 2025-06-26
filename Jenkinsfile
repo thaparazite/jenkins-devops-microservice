@@ -116,12 +116,10 @@ pipeline {
 		stage('Push Docker Image') {
 			steps {
 				echo 'Pushing Docker Image to Docker Hub...'
-				// sh 'docker push flaviuvanca/currency-exchange-devops:${env.BUILD_TAG}'
 				script {
 					docker.withRegistry('', 'docker-hub-credentials') {
-						echo "Pushing Docker image: ${dockerImage.imageName}:${env.BUILD_TAG}"
-						dockerImage.push()
-						//dockerImage.push("${env.BUILD_TAG}")
+						echo "Pushing Docker image with BUILD_TAG: ${env.BUILD_TAG}"
+						dockerImage.push("${env.BUILD_TAG}")
 						dockerImage.push("latest")
 						echo "Docker image pushed successfully!"
 					}
