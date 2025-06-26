@@ -42,8 +42,7 @@ pipeline {
 				echo "GIT_URL - ${env.GIT_URL}"
 				echo "GIT_PREVIOUS_COMMIT - ${env.GIT_PREVIOUS_COMMIT}"
 				echo "GIT_PREVIOUS_SUCCESSFUL_COMMIT - ${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
-				
-			}
+					
 			}
 		}// end of checkout stage
 
@@ -130,6 +129,7 @@ pipeline {
 			}
 		}// end of push docker image stage
 
+	}// end of stages	
 
 	post {	
 		success {
