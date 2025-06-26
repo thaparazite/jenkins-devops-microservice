@@ -90,7 +90,7 @@ pipeline {
 	    stage('Package'){
 			steps {
 				echo 'Packaging...'
-				sh 'mvn package - DskipTests'	
+				sh 'mvn package -DskipTests'	
 			}
 		}// end of package stage		
 
@@ -104,7 +104,7 @@ pipeline {
 				echo 'Building Docker Image...'
 				// "docker build -t flaviuvanca/currency-exchange-devops:${env.BUILD_TAG}"
 				script {
-					docker.build("docker build -t flaviuvanca/currency-exchange-devops:${env.BUILD_TAG}")
+					dockerImage = docker.build("flaviuvanca/currency-exchange-devops:${env.BUILD_TAG}")
 				}
 			}
 		}// end of build docker image stage
@@ -120,6 +120,7 @@ pipeline {
 				// sh 'docker push flaviuvanca/currency-exchange-devops:${env.BUILD_TAG}'
 				script {
 					docker.withRegistry('', 'docker-hub-credentials') {
+						echo "Pushing Docker image: ${dockerImage.imageName}:${env.BUILD_TAG}"
 						dockerImage.push()
 						//dockerImage.push("${env.BUILD_TAG}")
 						dockerImage.push("latest")
@@ -141,5 +142,5 @@ pipeline {
 			echo 'This will always run, regardless of the pipeline result.'
 		}
 	}// end of post
-	
+
 }// end of pipeline 
