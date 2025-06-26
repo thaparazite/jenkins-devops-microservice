@@ -8,13 +8,7 @@
 //Declarative
 pipeline {
 	//agent any
-	agent{
-		Docker{
-			{
-				image 'maven:3.9.10'
-			}// end of image
-		}// end of Docker
-	}// end of agent 
+	agent{ docker{ image 'maven:3.9.10' } }// end of agent 
 	stages {
 		stage('Build') {
 			steps {
