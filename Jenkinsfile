@@ -83,13 +83,16 @@ pipeline {
 			}
 		}// end of integration test stage
 
+		/*
+		 Create a stage to package the project using Maven.
+		 This stage will skip the tests and package the project.
+		 */
 	    stage('Package'){
 			steps {
 				echo 'Packaging...'
 				sh 'mvn package - DskipTests'	
 			}
-		}		
-
+		}// end of package stage		
 
 		/*
 		 Create a stage to build the docker image. 
