@@ -130,17 +130,16 @@ pipeline {
 		}// end of push docker image stage
 
 
+	post {	
+		success {
+			echo 'Pipeline completed successfully!'
+		}
+		failure {
+			echo 'Pipeline failed!'
+		}
+		always {
+			echo 'This will always run, regardless of the pipeline result.'
+		}
+	}// end of post
+	
 }// end of pipeline 
-
-
-post {	
-	success {
-		echo 'Pipeline completed successfully!'
-	}
-	failure {
-		echo 'Pipeline failed!'
-	}
-	always {
-		echo 'This will always run, regardless of the pipeline result.'
-	}
-}// end of post
