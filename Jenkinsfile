@@ -43,7 +43,7 @@ pipeline {
 				echo "GIT_PREVIOUS_COMMIT - ${env.GIT_PREVIOUS_COMMIT}"
 				echo "GIT_PREVIOUS_SUCCESSFUL_COMMIT - ${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
 				
-				
+			}
 			}
 		}// end of checkout stage
 
